@@ -134,6 +134,10 @@ It can shade from dark to light, from saturated to dull, and around the spectrum
 
 =over 4
 
+=item B<new>
+
+Constructor.
+
 =item B<generate>
 
 This method returns a list of size $elements which contains web colors starting from $start_color and ranging to $end_color.
@@ -147,6 +151,14 @@ This method returns a list of size $elements which contains web colors starting 
  @list = $spectrum->generate($elements,$start_color,$end_color);
 
 =back
+
+=item B<hsi2rgb>
+
+Hue, saturation and intesity to red, green and blue.
+
+=item B<rgb2hsi>
+
+Red, green and blue to hue, saturation and intesity.
 
 =back
 
