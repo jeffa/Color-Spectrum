@@ -203,7 +203,7 @@ Mark Mills
 
 =head1 MAINTAINANCE
 
-This package is maintained by Jeffrey Hayes Anderson
+This package is maintained by Jeff Anderson
 
 =head1 COPYRIGHT
 
