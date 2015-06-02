@@ -126,9 +126,7 @@ Color::Spectrum - Generate spectrums of web colors.
 
 =head1 DESCRIPTION
 
-From the author, Mark Mills: "This is a rewrite of a script I wrote [around 1999] to make spectrums of colors for web page table tags.  It uses a real simple geometric conversion that gets the job done.
-
-It can shade from dark to light, from saturated to dull, and around the spectrum all at the same time. It can go thru the spectrum in either direction."
+From the author, Mark Mills: "This is a rewrite of a script I wrote [around 1999] to make spectrums of colors for web page table tags.  It uses a real simple geometric conversion that gets the job done. It can shade from dark to light, from saturated to dull, and around the spectrum all at the same time. It can go thru the spectrum in either direction."
 
 =head1 METHODS
 
@@ -136,7 +134,7 @@ It can shade from dark to light, from saturated to dull, and around the spectrum
 
 =item B<new>
 
-Constructor.
+Constructor. No args.
 
 =item B<generate>
 
@@ -191,11 +189,39 @@ B<Color::Spectrum::Multi> - If you do not feel comfortable working with array sl
 
 =head1 BUGS
 
-If you have found a bug, typo, etc. please visit Best Practical Solution's CPAN bug tracker at http://rt.cpan.org:
+Please report any bugs or feature requests to either
 
-B<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Color-Spectrum>
+=over 4
 
-or send mail to B<bug-Color-Spectrum@rt.cpan.org>
+=item * Email: C<bug-color-spectrum at rt.cpan.org>
+
+=item * Web: L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Color-Spectrum>
+
+=back
+
+=head1 GITHUB
+
+The Github project is L<https://github.com/jeffa/Color-Spectrum>
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Color::Spectrum
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker (report bugs here) L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Color-Spectrum>
+
+=item * AnnoCPAN: Annotated CPAN documentation L<http://annocpan.org/dist/Color-Spectrum>
+
+=item * CPAN Ratings L<http://cpanratings.perl.org/d/Color-Spectrum>
+
+=item * Search CPAN L<http://search.cpan.org/dist/Color-Spectrum/>
+
+=back
 
 =head1 AUTHOR
 
@@ -203,16 +229,46 @@ Mark Mills
 
 =head1 MAINTAINANCE
 
-This package is maintained by Jeff Anderson
+This package is maintained by Jeff Anderson, C<< <jeffa at cpan.org> >>
 
 =head1 COPYRIGHT
 
 Copyright (c) 2015 Mark Mills.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+This program is free software; you can redistribute it and/or modify it
+under the terms of the the Artistic License (2.0). You may obtain a
+copy of the full license at:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+L<http://www.perlfoundation.org/artistic_license_2_0>
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Any use, modification, and distribution of the Standard or Modified
+Versions is governed by this Artistic License. By using, modifying or
+distributing the Package, you accept this license. Do not use, modify,
+or distribute the Package, if you do not accept this license.
+
+If your Modified Version has been derived from a Modified Version made
+by someone other than you, you are nevertheless required to ensure that
+your Modified Version complies with the requirements of this license.
+
+This license does not grant you the right to use any trademark, service
+mark, tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge
+patent license to make, have made, use, offer to sell, sell, import and
+otherwise transfer the Package with respect to any patent claims
+licensable by the Copyright Holder that are necessarily infringed by the
+Package. If you institute patent litigation (including a cross-claim or
+counterclaim) against any party alleging that the Package constitutes
+direct or contributory patent infringement, then this Artistic License
+to you shall terminate on the date that such litigation is filed.
+
+Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER
+AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY
+YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
+CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
