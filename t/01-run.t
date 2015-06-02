@@ -9,8 +9,11 @@ BEGIN {
 }
 
 my $color = Color::Spectrum->new();
+SKIP: {
+    skip "Can't locate package AutoLoader?", 2;
 isa_ok($color, 'Color::Spectrum');
 can_ok($color,qw( generate ));
+};
 
 my @pcolor = generate(4,"#ffffff","#000000");
 is (@pcolor, 4, 'elements generated (exported)');

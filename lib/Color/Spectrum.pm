@@ -8,98 +8,98 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 require Exporter;
 @ISA = qw(Exporter AutoLoader);
 @EXPORT = qw(generate rgb2hsi hsi2rgb);
-$VERSION = '1.08';
+$VERSION = '1.09';
 
 sub new {
-	my $class = shift;
-	my $self  = {};
-	bless $self, $class;
-	return $self;
+    my $class = shift;
+    my $self  = {};
+    bless $self, $class;
+    return $self;
 }
 
 sub generate {
-	my $self = shift if ref($_[0]) eq __PACKAGE__;
-	croak "ColorCount and at least 1 color like #AF32D3 needed\n" if @_ < 2;
-	my $cnt  = shift;
-	my $col1 = shift;
-	my $col2 = shift || $col1;
-	my @murtceps;
-	push @murtceps, uc $col1;
+    my $self = shift if ref($_[0]) eq __PACKAGE__;
+    croak "ColorCount and at least 1 color like #AF32D3 needed\n" if @_ < 2;
+    my $cnt  = shift;
+    my $col1 = shift;
+    my $col2 = shift || $col1;
+    my @murtceps;
+    push @murtceps, uc $col1;
 
-	my $pound = $col1 =~ /^#/ ? "#" : "";
-	$col1 =~s/^#//;
-	$col2 =~s/^#//;
+    my $pound = $col1 =~ /^#/ ? "#" : "";
+    $col1 =~s/^#//;
+    $col2 =~s/^#//;
 
-	my $clockwise = 0;
-	$clockwise++ if ( $cnt < 0 );
-	$cnt = int( abs( $cnt ) );
+    my $clockwise = 0;
+    $clockwise++ if ( $cnt < 0 );
+    $cnt = int( abs( $cnt ) );
 
-	return ( wantarray() ? @murtceps : \@murtceps ) if $cnt <= 1;
-	return ( wantarray() ? ("#$col1", "#$col2") : ["#$col1", "#$col2"] ) if $cnt == 2;
+    return ( wantarray() ? @murtceps : \@murtceps ) if $cnt <= 1;
+    return ( wantarray() ? ("#$col1", "#$col2") : ["#$col1", "#$col2"] ) if $cnt == 2;
 
-	# The RGB values need to be on the decimal scale,
-	# so we divide em by 255 enpassant.
-	my ( $h1, $s1, $i1 ) = rgb2hsi( map { hex() / 255 } unpack( 'a2a2a2', $col1 ) );
-	my ( $h2, $s2, $i2 ) = rgb2hsi( map { hex() / 255 } unpack( 'a2a2a2', $col2 ) );
-	$cnt--;
-	my $sd = ( $s2 - $s1 ) / $cnt;
-	my $id = ( $i2 - $i1 ) / $cnt;
-	my $hd = $h2 - $h1;
-	if ( uc( $col1 ) eq uc( $col2 ) ) {
-		$hd = ( $clockwise ? -1 : 1 ) / $cnt;
-	} else {
-		$hd = ( ( $hd < 0 ? 1 : 0 ) + $hd - $clockwise) / $cnt;
-	}
+    # The RGB values need to be on the decimal scale,
+    # so we divide em by 255 enpassant.
+    my ( $h1, $s1, $i1 ) = rgb2hsi( map { hex() / 255 } unpack( 'a2a2a2', $col1 ) );
+    my ( $h2, $s2, $i2 ) = rgb2hsi( map { hex() / 255 } unpack( 'a2a2a2', $col2 ) );
+    $cnt--;
+    my $sd = ( $s2 - $s1 ) / $cnt;
+    my $id = ( $i2 - $i1 ) / $cnt;
+    my $hd = $h2 - $h1;
+    if ( uc( $col1 ) eq uc( $col2 ) ) {
+        $hd = ( $clockwise ? -1 : 1 ) / $cnt;
+    } else {
+        $hd = ( ( $hd < 0 ? 1 : 0 ) + $hd - $clockwise) / $cnt;
+    }
 
-	while (--$cnt) {
-		$s1 += $sd;
-		$i1 += $id;
-		$h1 += $hd;
-		$h1 -= 1 if $h1>1;
-		$h1 += 1 if $h1<0;
-		push @murtceps, sprintf "$pound%02X%02X%02X",
-			map { int( $_ * 255 +.5) } hsi2rgb( $h1, $s1, $i1 );
-	}
-	push @murtceps, uc "$pound$col2";
-	return wantarray() ? @murtceps : \@murtceps;
+    while (--$cnt) {
+        $s1 += $sd;
+        $i1 += $id;
+        $h1 += $hd;
+        $h1 -= 1 if $h1>1;
+        $h1 += 1 if $h1<0;
+        push @murtceps, sprintf "$pound%02X%02X%02X",
+            map { int( $_ * 255 +.5) } hsi2rgb( $h1, $s1, $i1 );
+    }
+    push @murtceps, uc "$pound$col2";
+    return wantarray() ? @murtceps : \@murtceps;
 }
 
 sub rgb2hsi {
-	my ( $r, $g, $b ) = @_;
-	my ( $h, $s, $i ) = ( 0, 0, 0 );
+    my ( $r, $g, $b ) = @_;
+    my ( $h, $s, $i ) = ( 0, 0, 0 );
 
-	$i = ( $r + $g + $b ) / 3;
-	return ( $h, $s, $i ) if $i == 0;
+    $i = ( $r + $g + $b ) / 3;
+    return ( $h, $s, $i ) if $i == 0;
 
-	my $x = $r - 0.5 * ( $g + $b );
-	my $y = 0.866025403 * ( $g - $b );
-	$s = ( $x ** 2 + $y ** 2 ) ** 0.5;
-	return ( $h, $s, $i ) if $s == 0;
+    my $x = $r - 0.5 * ( $g + $b );
+    my $y = 0.866025403 * ( $g - $b );
+    $s = ( $x ** 2 + $y ** 2 ) ** 0.5;
+    return ( $h, $s, $i ) if $s == 0;
 
-	$h = POSIX::atan2( $y , $x ) / ( 2 * 3.1415926535 );
-	return ( $h, $s, $i );
+    $h = POSIX::atan2( $y , $x ) / ( 2 * 3.1415926535 );
+    return ( $h, $s, $i );
 }
 
 sub hsi2rgb {
-	my ( $h, $s, $i ) =  @_;
-	my ( $r, $g, $b ) = ( 0, 0, 0 );
+    my ( $h, $s, $i ) =  @_;
+    my ( $r, $g, $b ) = ( 0, 0, 0 );
 
-	# degenerate cases. If !intensity it's black, if !saturation it's grey
-	return ( $r, $g, $b ) if ( $i == 0 );
-	return ( $i, $i, $i ) if ( $s == 0 );
+    # degenerate cases. If !intensity it's black, if !saturation it's grey
+    return ( $r, $g, $b ) if ( $i == 0 );
+    return ( $i, $i, $i ) if ( $s == 0 );
 
-	$h = $h * 2 * 3.1415926535;
-	my $x = $s * cos( $h );
-	my $y = $s * sin( $h );
+    $h = $h * 2 * 3.1415926535;
+    my $x = $s * cos( $h );
+    my $y = $s * sin( $h );
 
-	$r = $i + ( 2 / 3 * $x );
-	$g = $i - ( $x / 3 ) + ( $y / 2 / 0.866025403 );
-	$b = $i - ( $x / 3 ) - ( $y / 2 / 0.866025403 );
+    $r = $i + ( 2 / 3 * $x );
+    $g = $i - ( $x / 3 ) + ( $y / 2 / 0.866025403 );
+    $b = $i - ( $x / 3 ) - ( $y / 2 / 0.866025403 );
 
-	# limit 0<=x<=1  ## YUCK but we go outta range without it.
-	( $r, $b, $g ) = map { $_ < 0 ? 0 : $_ > 1 ? 1 : $_ } ( $r, $b, $g );
+    # limit 0<=x<=1  ## YUCK but we go outta range without it.
+    ( $r, $b, $g ) = map { $_ < 0 ? 0 : $_ > 1 ? 1 : $_ } ( $r, $b, $g );
 
-	return ( $r, $g, $b );
+    return ( $r, $g, $b );
 }
 
 1;
@@ -107,20 +107,20 @@ sub hsi2rgb {
 __END__
 =head1 NAME
 
-Color::Spectrum - Generate spectrums of web colors
+Color::Spectrum - Generate spectrums of web colors.
 
 =head1 SYNOPSIS
 
 =over 4
 
- # Procedural interface:
- use Color::Spectrum qw(generate);
- my @color = generate(10,'#000000','#FFFFFF');
+  # Procedural interface:
+  use Color::Spectrum qw(generate);
+  my @color = generate(10,'#000000','#FFFFFF');
 
- # OO interface:
- use Color::Spectrum;
- my $spectrum = Color::Spectrum->new();
- my @color = $spectrum->generate(10,'#000000','#FFFFFF');
+  # OO interface:
+  use Color::Spectrum;
+  my $spectrum = Color::Spectrum->new();
+  my @color = $spectrum->generate(10,'#000000','#FFFFFF');
 
 =back
 
@@ -207,7 +207,7 @@ This package is maintained by Jeff Anderson
 
 =head1 COPYRIGHT
 
-Copyright (c) 2009 Mark Mills.
+Copyright (c) 2015 Mark Mills.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

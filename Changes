@@ -1,5 +1,8 @@
 Revision history for Perl extension Color::Spectrum.
 
+1.09
+    - convert tabs to spaces
+
 1.08  Mar 23 2013 
     - structure built with Module::Starter
     - uploaded to github
