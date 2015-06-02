@@ -1,0 +1,10 @@
+Makefile$
+.git
+.travis.yml
+MANIFEST.SKIP
+MANIFEST.bak
+MYMETA
+t/author/
+blib/
+pm_to_blib
+ignore.txt
