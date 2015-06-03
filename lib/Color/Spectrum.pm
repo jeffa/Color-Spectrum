@@ -8,7 +8,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 require Exporter;
 @ISA = qw(Exporter AutoLoader);
 @EXPORT = qw(generate rgb2hsi hsi2rgb);
-$VERSION = '1.09';
+$VERSION = '1.10';
 
 sub new {
     my $class = shift;
