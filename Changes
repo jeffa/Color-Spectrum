@@ -1,5 +1,7 @@
 Revision history for Perl extension Color::Spectrum.
 
+1.11
+
 1.10
     - able to parse non hex color names
       (now requires Color::Library)
