@@ -25,7 +25,15 @@ sub generate {
     my $col1 = shift;
     my $col2 = shift || $col1;
 
-    my $pound = $col1 =~ /^#/ ? "#" : "";
+    # expand 3 hex chars to 6
+    $col1 =~ s/^([a-f0-9])([a-f0-9])([a-f0-9])$/$1$1$2$2$3$3/i;
+    $col2 =~ s/^([a-f0-9])([a-f0-9])([a-f0-9])$/$1$1$2$2$3$3/i;
+
+    # look up hex color if not a hex color
+    $col1 = Color::Library->color( $col1 ) unless $col1 =~ /^#?[a-f0-9]{6}$/i;
+    $col2 = Color::Library->color( $col2 ) unless $col2 =~ /^#?[a-f0-9]{6}$/i;
+
+    # remove leading hash (we'll add it back later)
     $col1 =~s/^#//;
     $col2 =~s/^#//;
 
@@ -33,9 +41,9 @@ sub generate {
     $clockwise++ if ( $cnt < 0 );
     $cnt = int( abs( $cnt ) );
 
-    my @murtceps = ( uc $col1 );
+    my @murtceps = ( uc "#$col1" );
     return ( wantarray() ? @murtceps : \@murtceps ) if $cnt <= 1;
-    return ( wantarray() ? (uc "#$col1", "#$col2") : [uc "#$col1", "#$col2"] ) if $cnt == 2;
+    return ( wantarray() ? (uc "#$col1","#$col2") : [uc "#$col1","#$col2"] ) if $cnt == 2;
 
     # The RGB values need to be on the decimal scale,
     # so we divide em by 255 enpassant.
@@ -57,10 +65,10 @@ sub generate {
         $h1 += $hd;
         $h1 -= 1 if $h1>1;
         $h1 += 1 if $h1<0;
-        push @murtceps, sprintf "$pound%02X%02X%02X",
+        push @murtceps, sprintf "#%02X%02X%02X",
             map { int( $_ * 255 +.5) } hsi2rgb( $h1, $s1, $i1 );
     }
-    push @murtceps, uc "$pound$col2";
+    push @murtceps, uc "#$col2";
     return wantarray() ? @murtceps : \@murtceps;
 }
 
