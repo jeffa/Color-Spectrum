@@ -1,14 +1,14 @@
 package Color::Spectrum;
-
 use strict;
+use warnings FATAL => 'all';
+our $VERSION = '1.10';
+
 use POSIX;
 use Carp;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
-require Exporter;
-@ISA = qw(Exporter AutoLoader);
-@EXPORT = qw(generate rgb2hsi hsi2rgb);
-$VERSION = '1.10';
+use Exporter 'import';
+our @EXPORT_OK = qw( generate rgb2hsi hsi2rgb );
 
 sub new {
     my $class = shift;

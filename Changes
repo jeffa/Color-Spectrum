@@ -1,6 +1,7 @@
 Revision history for Perl extension Color::Spectrum.
 
 1.10
+    - fix Exporter
 
 1.09
     - convert tabs to spaces

@@ -2,20 +2,13 @@
 use 5.006;
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 9;
+use Test::More tests => 7;
 
-BEGIN {
-    use_ok( 'Color::Spectrum' ) || print "Bail out!\n";
-}
+use Color::Spectrum;
 
-my $color = Color::Spectrum->new();
-SKIP: {
-    skip "Can't locate package AutoLoader?", 2;
-isa_ok($color, 'Color::Spectrum');
-can_ok($color,qw( generate ));
-};
+my $color = new_ok 'Color::Spectrum';
 
-my @pcolor = generate(4,"#ffffff","#000000");
+my @pcolor = Color::Spectrum::generate(4,"#ffffff","#000000");
 is (@pcolor, 4, 'elements generated (exported)');
 
 my @ocolor = $color->generate(4,"#ffffff","#000000");

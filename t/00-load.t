@@ -6,8 +6,4 @@ use Test::More;
 
 plan tests => 1;
 
-BEGIN {
-    use_ok( 'Color::Spectrum' ) || print "Bail out!\n";
-}
-
-diag( "Testing Color::Spectrum $Color::Spectrum::VERSION, Perl $], $^X" );
+use_ok( 'Color::Spectrum' ) || print "Bail out!\n";
