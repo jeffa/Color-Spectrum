@@ -122,13 +122,13 @@ Color::Spectrum - Generate spectrums of web colors.
 =over 4
 
   # Procedural interface:
-  use Color::Spectrum qw(generate);
-  my @color = generate(10,'#000000','#FFFFFF');
+  use Color::Spectrum qw( generate );
+  my @color = generate(10, '#000000', '#FF0000' );
 
   # OO interface:
   use Color::Spectrum;
-  my $spectrum = Color::Spectrum->new();
-  my @color = $spectrum->generate(10,'#000000','#FFFFFF');
+  my $spectrum = Color::Spectrum->new;
+  my @color = $spectrum->generate( 10, 'black', 'red' );
 
 =back
 
@@ -151,10 +151,10 @@ This method returns a list of size $elements which contains web colors starting 
 =over 4
 
  # Procedural interface:
- @list = generate($elements,$start_color,$end_color);
+ @list = generate( $elements, $start_color, $end_color );
 
  # OO interface:
- @list = $spectrum->generate($elements,$start_color,$end_color);
+ @list = $spectrum->generate( $elements, $start_color, $end_color );
 
 =back
 
@@ -191,9 +191,9 @@ If you want to expand from one color to the next, and then to yet another color,
 
 =back
 
-=head1 SEE ALSO
+=head1 REQUIRES
 
-B<Color::Spectrum::Multi> - If you do not feel comfortable working with array slices, then you can instead use this subclass to generate your multi colored spectrums.
+B<Color::Library> - Used to look up non hash value colors.
 
 =head1 BUGS
 
