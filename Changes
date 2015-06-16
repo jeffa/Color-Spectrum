@@ -1,6 +1,8 @@
 Revision history for Perl extension Color::Spectrum.
 
 1.10
+    - now requires Color::Library
+      (able to parse non hex color names)
     - fix Exporter
 
 1.09

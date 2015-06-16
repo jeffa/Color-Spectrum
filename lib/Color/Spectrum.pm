@@ -5,10 +5,11 @@ our $VERSION = '1.10';
 
 use POSIX;
 use Carp;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
 
 use Exporter 'import';
 our @EXPORT_OK = qw( generate rgb2hsi hsi2rgb );
+
+use Color::Library;
 
 sub new {
     my $class = shift;
@@ -23,8 +24,6 @@ sub generate {
     my $cnt  = shift;
     my $col1 = shift;
     my $col2 = shift || $col1;
-    my @murtceps;
-    push @murtceps, uc $col1;
 
     my $pound = $col1 =~ /^#/ ? "#" : "";
     $col1 =~s/^#//;
@@ -34,8 +33,9 @@ sub generate {
     $clockwise++ if ( $cnt < 0 );
     $cnt = int( abs( $cnt ) );
 
+    my @murtceps = ( uc $col1 );
     return ( wantarray() ? @murtceps : \@murtceps ) if $cnt <= 1;
-    return ( wantarray() ? ("#$col1", "#$col2") : ["#$col1", "#$col2"] ) if $cnt == 2;
+    return ( wantarray() ? (uc "#$col1", "#$col2") : [uc "#$col1", "#$col2"] ) if $cnt == 2;
 
     # The RGB values need to be on the decimal scale,
     # so we divide em by 255 enpassant.
