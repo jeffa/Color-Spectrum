@@ -115,7 +115,7 @@ sub hsi2rgb {
 __END__
 =head1 NAME
 
-Color::Spectrum - Generate spectrums of web colors.
+Color::Spectrum - Just another HTML color generator.
 
 =head1 SYNOPSIS
 
@@ -134,7 +134,12 @@ Color::Spectrum - Generate spectrums of web colors.
 
 =head1 DESCRIPTION
 
-From the author, Mark Mills: "This is a rewrite of a script I wrote [around 1999] to make spectrums of colors for web page table tags.  It uses a real simple geometric conversion that gets the job done. It can shade from dark to light, from saturated to dull, and around the spectrum all at the same time. It can go thru the spectrum in either direction."
+From the author, Mark Mills: "This is a rewrite of a script I wrote
+[around 1999] to make spectrums of colors for web page table tags.
+It uses a real simple geometric conversion that gets the job done.
+It can shade from dark to light, from saturated to dull, and around
+the spectrum all at the same time. It can go thru the spectrum in
+either direction."
 
 =head1 METHODS
 
@@ -146,7 +151,8 @@ Constructor. No args.
 
 =item B<generate>
 
-This method returns a list of size $elements which contains web colors starting from $start_color and ranging to $end_color.
+This method returns a list of size $elements which contains
+web colors starting from $start_color and ranging to $end_color.
 
 =over 4
 
@@ -170,7 +176,10 @@ Red, green and blue to hue, saturation and intesity.
 
 =head1 About Muliple Color Spectrums
 
-Just call generate() more than once. If you want expand from one color to the next, and then back to the original color then simply reuse the returned array (minus the last element if you don't want the repeated color):
+Just call generate() more than once. If you want expand from one
+color to the next, and then back to the original color then simply
+reuse the returned array (minus the last element if you don't want
+the repeated color).
 
 =over 4
 
@@ -180,7 +189,9 @@ Just call generate() more than once. If you want expand from one color to the ne
 
 =back
 
-If you want to expand from one color to the next, and then to yet another color, simply stack calls to generate() and take care to remove the repeated color each time:
+If you want to expand from one color to the next, and then to yet
+another color, simply stack calls to generate() and take care to
+remove the repeated color each time:
 
 =over 4
 

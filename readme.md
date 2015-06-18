@@ -1,6 +1,6 @@
 Color::Spectrum
 ===============
-Generate spectrums of web colors.
+Just another HTML color generator.
 
 Synopsis
 --------
