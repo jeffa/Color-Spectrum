@@ -1,5 +1,7 @@
 Revision history for Perl extension Color::Spectrum.
 
+1.12
+
 1.11
     - argument validation for color names
 
