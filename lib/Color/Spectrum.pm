@@ -20,10 +20,10 @@ sub new {
 
 sub generate {
     my $self = shift if ref($_[0]) eq __PACKAGE__;
-    croak "ColorCount and at least 1 color like #AF32D3 needed\n" if @_ < 2;
+    croak "ColorCount and at least one color needed" if @_ < 2;
     my $cnt  = $_[0];
     my $col1 = $_[1];
-    $_[2] ||= $_[1];
+    $_[2]  ||= $_[1];
     my $col2 = $_[2];
 
     # expand 3 hex chars to 6
@@ -34,8 +34,8 @@ sub generate {
     $col1 = Color::Library->color( $col1 ) unless $col1 =~ /^#?[a-f0-9]{6}$/i;
     $col2 = Color::Library->color( $col2 ) unless $col2 =~ /^#?[a-f0-9]{6}$/i;
 
-    croak "Invalid color $_[1]\n" unless $col1;
-    croak "Invalid color $_[2]\n" unless $col2;
+    croak "Invalid color $_[1]" unless $col1;
+    croak "Invalid color $_[2]" unless $col2;
 
     # remove leading hash (we'll add it back later)
     $col1 =~s/^#//;
@@ -123,8 +123,6 @@ Color::Spectrum - Just another HTML color generator.
 
 =head1 SYNOPSIS
 
-=over 4
-
   # Procedural interface:
   use Color::Spectrum qw( generate );
   my @color = generate(10, '#000000', '#FF0000' );
@@ -133,8 +131,6 @@ Color::Spectrum - Just another HTML color generator.
   use Color::Spectrum;
   my $spectrum = Color::Spectrum->new;
   my @color = $spectrum->generate( 10, 'black', 'red' );
-
-=back
 
 =head1 DESCRIPTION
 
@@ -158,15 +154,11 @@ Constructor. No args.
 This method returns a list of size $elements which contains
 web colors starting from $start_color and ranging to $end_color.
 
-=over 4
-
  # Procedural interface:
  @list = generate( $elements, $start_color, $end_color );
 
  # OO interface:
  @list = $spectrum->generate( $elements, $start_color, $end_color );
-
-=back
 
 =item B<hsi2rgb>
 
@@ -185,26 +177,18 @@ color to the next, and then back to the original color then simply
 reuse the returned array (minus the last element if you don't want
 the repeated color).
 
-=over 4
-
  my @color = $spectrum->generate(4,'#000000','#FFFFFF');
 
  print for @color, (reverse @color)[1..$#color];
-
-=back
 
 If you want to expand from one color to the next, and then to yet
 another color, simply stack calls to generate() and take care to
 remove the repeated color each time:
 
-=over 4
-
  my @color = (
     $spectrum->generate(13,'#FF0000','#00FF00'),
     ($spectrum->generate(13,'#00FF00','#0000FF'))[1..12],
  );
-
-=back
 
 =head1 REQUIRES
 
