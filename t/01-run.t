@@ -2,7 +2,7 @@
 use 5.006;
 use strict;
 use warnings FATAL => 'all';
-use Test::More tests => 15;
+use Test::More tests => 17;
 
 use Color::Spectrum;
 
@@ -38,3 +38,11 @@ is $color[9], '#000000', 'last element expanded to 6 chars';
 @color = $color->generate(10,"red","black");
 is $color[0], '#FF0000', 'first element translated';
 is $color[9], '#000000', 'last element translated';
+
+eval { @color = $color->generate(10,"foo","blue") };
+like $@, qr/^Invalid color foo/, 'caught invalid color exception for 2nd arg';
+
+eval { @color = $color->generate(10,"blue","baz") };
+like $@, qr/^Invalid color baz/, 'caught invalid color exception for 3nd arg';
+
+

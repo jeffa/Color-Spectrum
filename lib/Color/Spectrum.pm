@@ -21,9 +21,10 @@ sub new {
 sub generate {
     my $self = shift if ref($_[0]) eq __PACKAGE__;
     croak "ColorCount and at least 1 color like #AF32D3 needed\n" if @_ < 2;
-    my $cnt  = shift;
-    my $col1 = shift;
-    my $col2 = shift || $col1;
+    my $cnt  = $_[0];
+    my $col1 = $_[1];
+    $_[2] ||= $_[1];
+    my $col2 = $_[2];
 
     # expand 3 hex chars to 6
     $col1 =~ s/^([a-f0-9])([a-f0-9])([a-f0-9])$/$1$1$2$2$3$3/i;
@@ -32,6 +33,9 @@ sub generate {
     # look up hex color if not a hex color
     $col1 = Color::Library->color( $col1 ) unless $col1 =~ /^#?[a-f0-9]{6}$/i;
     $col2 = Color::Library->color( $col2 ) unless $col2 =~ /^#?[a-f0-9]{6}$/i;
+
+    croak "Invalid color $_[1]\n" unless $col1;
+    croak "Invalid color $_[2]\n" unless $col2;
 
     # remove leading hash (we'll add it back later)
     $col1 =~s/^#//;
