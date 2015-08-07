@@ -1,6 +1,7 @@
 Revision history for Perl extension Color::Spectrum.
 
 1.12
+    - added github meta to makefile
 
 1.11
     - argument validation for color names

@@ -20,6 +20,15 @@ WriteMakefile(
     PREREQ_PM => {
         'Color::Library' => 0,
     },
+    (! eval { ExtUtils::MakeMaker->VERSION(6.46) } ? () :
+        (META_ADD => {
+            resources => {
+                homepage   => 'https://github.com/jeffa/Color-Spectrum',
+                repository => 'https://github.com/jeffa/Color-Spectrum.git',
+                bugtracker => 'https://github.com/jeffa/Color-Spectrum/issues',
+            },
+        })
+    ),
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Color-Spectrum-*' },
 );
