@@ -1,6 +1,6 @@
-Color::Spectrum
-===============
-Just another HTML color generator.
+Color-Spectrum
+==============
+Just another HTML color generator. [![CPAN version](https://badge.fury.io/pl/Color-Spectrum.svg)](https://badge.fury.io/pl/Color-Spectrum)
 
 Synopsis
 --------
