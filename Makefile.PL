@@ -25,7 +25,6 @@ WriteMakefile(
             resources => {
                 homepage   => 'https://github.com/jeffa/Color-Spectrum',
                 repository => 'https://github.com/jeffa/Color-Spectrum.git',
-                bugtracker => 'https://github.com/jeffa/Color-Spectrum/issues',
             },
         })
     ),
