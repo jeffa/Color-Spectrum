@@ -1,6 +1,6 @@
 Color-Spectrum
 ==============
-Just another HTML color generator. [![CPAN version](https://badge.fury.io/pl/Color-Spectrum.svg)](https://badge.fury.io/pl/Color-Spectrum)
+Just another HTML color generator. [![CPAN Version](https://badge.fury.io/rb/Color-Spectrum.svg)](https://metacpan.org/pod/Color::Spectrum) [![Build Status](https://api.travis-ci.org/jeffa/Color-Spectrum.svg?branch=master)](https://travis-ci.org/jeffa/Color-Spectrum)
 
 Synopsis
 --------
