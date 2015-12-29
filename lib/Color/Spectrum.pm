@@ -240,7 +240,7 @@ This package is maintained by Jeff Anderson, C<< <jeffa at cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2016 Mark Mills.
+Copyright 2016 Mark Mills.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the the Artistic License (2.0). You may obtain a
