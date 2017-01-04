@@ -1,7 +1,7 @@
 package Color::Spectrum;
 use strict;
 use warnings FATAL => 'all';
-our $VERSION = '1.14';
+our $VERSION = '1.15';
 
 use POSIX;
 use Carp;
