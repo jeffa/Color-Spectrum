@@ -8,8 +8,7 @@ WriteMakefile(
     AUTHOR           => q{jeffa <info+cpan@unlocalhost.com>},
     VERSION_FROM     => 'lib/Color/Spectrum.pm',
     ABSTRACT_FROM    => 'lib/Color/Spectrum.pm',
-    LICENSE          => 'Artistic_2_0',
-    PL_FILES         => {},
+    LICENSE          => 'artistic_2',
     MIN_PERL_VERSION => 5.006,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
