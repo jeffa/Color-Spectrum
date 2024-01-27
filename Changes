@@ -1,5 +1,7 @@
 Revision history for Perl extension Color::Spectrum.
 
+1.18
+
 1.16
     - update copyright date
 	- removed Travis link from readme
